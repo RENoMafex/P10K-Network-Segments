@@ -1,5 +1,5 @@
 # P10K-Network-Segments
-A few usefull (network related) @romkatv/Powerlevel10k prompt segments.
+A few usefull (network related) [Powerlevel10k](https://github.com/romkatv/powerlevel10k) prompt segments.
 
 ## Usage
 
