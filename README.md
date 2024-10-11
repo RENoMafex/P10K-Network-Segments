@@ -7,6 +7,11 @@ Just download ``networksegments.zsh`` to a place where you want, then add ``sour
 
 ## Segments
 ### my\_wired\_ip
+#### Description
 Shows the ip of your first connected wired interface (the interface needs a ipv4 address and the interface name must match Regex ``[Ee]\w+``)
 ### my\_wifi\_ip
+#### Description
+Shows the ip of your first connected wireless interface (the interface needs a ipv4 address and the interface name must match Regex ``[Ww]\w+``)
 ### my\_if\_count
+#### Description
+Shows the number of connected interfaces which meet the Regex criteria of the last two segments and have an ipv4 address. Also works without the other segments.
