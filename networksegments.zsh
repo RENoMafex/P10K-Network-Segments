@@ -1,5 +1,5 @@
 # MY WIRED IP
-  typeset -g POWERLEVEL9K_MY_WIRED_IP_FOREGROUND=38						# Text color
+  typeset -g POWERLEVEL9K_MY_WIRED_IP_FOREGROUND='#a050ff'				# Text color
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_FOREGROUND='#ffffff'	# Text color if no wired IF is connected
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_BACKGROUND='#aa1100'	# Segment color if no wired IF is connected
   typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME=true					# Show the name of the IF
@@ -7,7 +7,7 @@
   typeset -g POWERLEVEL9K_MY_WIRED_IP_PREFIX='󰍸 '						# Prefix for the wired segment
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_PREFIX='󰍸'			# Prefix for the wired segment if no wired IF is connected
 # MY WIFI IP
-  typeset -g POWERLEVEL9K_MY_WIFI_IP_FOREGROUND=38						# Text color
+  typeset -g POWERLEVEL9K_MY_WIFI_IP_FOREGROUND='#a050ff'				# Text color
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_FOREGROUND='#ffffff'	# Text color if no wifi IF is connected
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_BACKGROUND='#aa1100'	# Segment color if no wifi IF is connected 
   typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME=true					# Show the name of the IF
@@ -15,7 +15,7 @@
   typeset -g POWERLEVEL9K_MY_WIFI_IP_PREFIX=' '						# Prefix for the wifi segment
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_PREFIX=''				# Prefix for the wifi segment if no wifi IF is connected
 # MY IF COUNT
-  typeset -g POWERLEVEL9K_MY_IF_COUNT_FOREGROUND=38						# Text color
+  typeset -g POWERLEVEL9K_MY_IF_COUNT_FOREGROUND='#a050ff'				# Text color
   typeset -g POWERLEVEL9K_MY_IF_COUNT_PREFIX='#'						# Prefix for the Count segment
   typeset -g POWERLEVEL9K_MY_IF_COUNT_MAXUSUAL=2						# If more than this number of wired/wifi IF are connected,
   																		#	segment will turn red
