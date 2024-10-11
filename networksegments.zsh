@@ -84,8 +84,8 @@ function prompt_my_wifi_ip () {
 function prompt_my_if_count () {
 	local count=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+|[Ww]\w+)' | /bin/wc -l )
 	if [[ ( $count -le $POWERLEVEL9K_MY_IF_COUNT_MAXUSUAL ) && ( $count -gt 0 ) ]]; then
-		p10k segment -t "$count"
+		p10k segment -t "%B$count%b"
 	else
-		p10k segment -s UNUSUAL -t "$count"
+		p10k segment -s UNUSUAL -t "%B$count%b"
 	fi
 }
