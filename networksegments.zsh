@@ -40,9 +40,9 @@ function prompt_my_wired_ip () {
 	done
 	if [[ -n $ip ]]; then
 		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME == true ]]; then
-			p10k segment -t "$interface: $ip"
+			p10k segment -t "$interface: %B$ip%b"
 		else
-			p10k segment -t "$ip"
+			p10k segment -t "%B$ip%b"
 		fi
 	else
 		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWUNCONNECTED == true ]]; then
@@ -64,9 +64,9 @@ function prompt_my_wifi_ip () {
 	done
 	if [[ -n $ip ]]; then
 		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME == true ]]; then
-			p10k segment -t "$interface: $ip"
+			p10k segment -t "$interface: %B$ip%b"
 		else
-			p10k segment -t "$ip"
+			p10k segment -t "%B$ip%b"
 		fi
 	else
 		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWUNCONNECTED == true ]]; then
