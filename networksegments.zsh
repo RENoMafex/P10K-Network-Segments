@@ -28,56 +28,30 @@
 #####################
 
 function prompt_my_wired_ip () {
-	local ip
-	local interface
-	local try=1
-	while [[ -z $ip ]]; do
-		interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /bin/grep -Eo '[Ee]\w+' | /bin/head -n $try | /bin/tail -n 1 )
-		if [[ -n $interface ]]; then
-			ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
-		else
-			break
-		fi
-		try=$((try+1))
-	done
-
-	if [[ -n $ip ]]; then
-		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME == true ]]; then
+	local interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /bin/grep -Eo '[Ee]\w+' | /bin/head -n 1 )
+	if [[ -n $interface ]]; then
+		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
+		if [[ $POWERLEVEL9_MY_WIRED_IP_SHOWIFNAME == true ]]; then
 			p10k segment -t "$interface: %B$ip%b"
 		else
 			p10k segment -t "%B$ip%b"
 		fi
 	else
-		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWUNCONNECTED == true ]]; then
-			p10k segment -s UNCONNECTED -t "x"
-		fi
+		p10k segment -s UNCONNECTED -t "x"
 	fi
 }
 
 function prompt_my_wifi_ip () {
-	local ip
-	local interface
-	local try=1
-	while [[ -z $ip ]]; do
-		interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ww]\w+)' | /bin/grep -Eo '[Ww]\w+' | /bin/head -n $try | /bin/tail -n 1 )
-		if [[ -n $interface ]]; then
-			ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
-		else
-			break
-		fi
-		try=$((try+1))
-	done
-
-	if [[ -n $ip ]]; then
-		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME == true ]]; then
+	local interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ww]\w+)' | /bin/grep -Eo '[Ww]\w+' | /bin/head -n 1 )
+	if [[ -n $interface ]]; then
+		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
+		if [[ $POWERLEVEL9_MY_WIRED_IP_SHOWIFNAME == true ]]; then
 			p10k segment -t "$interface: %B$ip%b"
 		else
 			p10k segment -t "%B$ip%b"
 		fi
 	else
-		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWUNCONNECTED == true ]]; then
-			p10k segment -s UNCONNECTED -t "x"
-		fi
+		p10k segment -s UNCONNECTED -t "x"
 	fi
 }
 
