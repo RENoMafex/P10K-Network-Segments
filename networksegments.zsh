@@ -79,6 +79,7 @@ function prompt_my_if_count () {
 }
 
 # Settings so that vims tabsize is the same as in the github online code viewer
+# Needs ":set modeline=true" to work
 
 # vim: set tabstop=8 :
 # vim: set shiftwidth=8 :
