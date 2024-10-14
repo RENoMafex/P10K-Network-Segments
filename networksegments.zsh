@@ -4,7 +4,7 @@
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_BACKGROUND='#aa1100'	# Segment color if no wired IF is connected
   typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME=true			# Show the name of the IF
   typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWUNCONNECTED=true		# Show segment even if no wired IF is connected
-  typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWNETSIZE=true
+  typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWNETSIZE=true			# Show CIDR notation of subnetmask
   typeset -g POWERLEVEL9K_MY_WIRED_IP_PREFIX='󰍸 '			# Prefix for the wired segment
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_PREFIX='󰍸'		# Prefix for the wired segment if no wired IF is connected
 # MY WIFI IP
@@ -13,7 +13,7 @@
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_BACKGROUND='#aa1100'	# Segment color if no wifi IF is connected 
   typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME=true			# Show the name of the IF
   typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWUNCONNECTED=true		# Show segment even if no wifi
-  typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWNETSIZE=true
+  typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWNETSIZE=true			# Show CIDR notation of subnetmask
   typeset -g POWERLEVEL9K_MY_WIFI_IP_PREFIX=' '			# Prefix for the wifi segment
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_PREFIX=''		# Prefix for the wifi segment if no wifi IF is connected
 # MY IF COUNT
