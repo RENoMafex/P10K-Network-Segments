@@ -16,6 +16,6 @@ Shows the ip of your first connected wireless interface (the interface needs a i
 ### my\_if\_count
 Shows the number of connected interfaces which meet the Regex criteria of the last two segments and have an ipv4 address. Also works without the other segments.
 
-## Configuration
+# Configuration
 All the segments work without any configuration. If you want, you can change a few things at the top of the ``networksegments.zsh`` file.
 Everything above "BEGIN OF SEGMENTS" is used to to controll the behavior of the segments. 
