@@ -73,3 +73,8 @@ function prompt_my_if_count () {
 		p10k segment -s UNUSUAL -t "%B$count%b"
 	fi
 }
+
+# Settings so that vims tabsize is the same as in the github online code viewer
+
+# vim: set tabstop=6 :
+# vim: set shiftwidth=6 :
