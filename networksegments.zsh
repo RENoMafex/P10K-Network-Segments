@@ -4,6 +4,7 @@
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_BACKGROUND='#aa1100'	# Segment color if no wired IF is connected
   typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME=true					# Show the name of the IF
   typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWUNCONNECTED=true				# Show segment even if no wired IF is connected
+  typeset -g POWERLEVEL9K_MY_WIRED_IP_SHOWNETSIZE=true
   typeset -g POWERLEVEL9K_MY_WIRED_IP_PREFIX='󰍸 '						# Prefix for the wired segment
   typeset -g POWERLEVEL9K_MY_WIRED_IP_UNCONNECTED_PREFIX='󰍸'			# Prefix for the wired segment if no wired IF is connected
 # MY WIFI IP
@@ -12,6 +13,7 @@
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_BACKGROUND='#aa1100'	# Segment color if no wifi IF is connected 
   typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME=true					# Show the name of the IF
   typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWUNCONNECTED=true				# Show segment even if no wifi
+  typeset -g POWERLEVEL9K_MY_WIFI_IP_SHOWNETSIZE=true
   typeset -g POWERLEVEL9K_MY_WIFI_IP_PREFIX=' '						# Prefix for the wifi segment
   typeset -g POWERLEVEL9K_MY_WIFI_IP_UNCONNECTED_PREFIX=''				# Prefix for the wifi segment if no wifi IF is connected
 # MY IF COUNT
@@ -30,7 +32,11 @@
 function prompt_my_wired_ip () {
 	local interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /bin/grep -Eo '[Ee]\w+' | /bin/head -n 1 )
 	if [[ -n $interface ]]; then
-		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
+		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWNETSIZE == true ]]; then
+			local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}/[0-9]{1,2}' | /bin/head -n 1 )
+		else
+			local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
+		fi
 		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME == true ]]; then
 			p10k segment -t "$interface: %B$ip%b"
 		else
@@ -44,8 +50,12 @@ function prompt_my_wired_ip () {
 function prompt_my_wifi_ip () {
 	local interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ww]\w+)' | /bin/grep -Eo '[Ww]\w+' | /bin/head -n 1 )
 	if [[ -n $interface ]]; then
-		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
-		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME == true ]]; then
+		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWNETSIZE == true ]]; then
+			local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}/[0-9]{1,2}' | /bin/head -n 1 )
+		else
+			local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | /bin/head -n 1 )
+		fi
+		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME == true ]]; then
 			p10k segment -t "$interface: %B$ip%b"
 		else
 			p10k segment -t "%B$ip%b"
