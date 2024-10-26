@@ -18,4 +18,4 @@ Shows the number of connected interfaces which meet the Regex criteria of the la
 
 # Configuration
 All the segments work without any configuration. If you want, you can change a few things at the top of the ``networksegments.zsh`` file.
-Everything above "BEGIN OF SEGMENTS" is used to to controll the behavior of the segments. 
+Everything above "BEGIN OF SEGMENTS" is used to to control the behavior of the segments. 
