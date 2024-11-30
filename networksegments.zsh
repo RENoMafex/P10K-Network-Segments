@@ -30,7 +30,7 @@
 #####################
 
 function prompt_my_wired_ip () {
-	local interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /bin/grep -Eo '[Ee]\w+' | /bin/head -n 1 )
+	local interface=$( /usr/bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /bin/grep -Eo '[Ee]\w+' | /bin/head -n 1 )
 	if [[ -n $interface ]]; then
 		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | head -n 1 )
 		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWNETSIZE == true ]]; then
