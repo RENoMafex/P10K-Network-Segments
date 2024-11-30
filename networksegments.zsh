@@ -30,11 +30,11 @@
 #####################
 
 function prompt_my_wired_ip () {
-	local interface=$( /usr/bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /bin/grep -Eo '[Ee]\w+' | /bin/head -n 1 )
+	local interface=$( /usr/bin/ip -4 addr show | /usr/bin/grep -Eo '^[0-9]+: ([Ee]\w+)' | /usr/bin/grep -Eo '[Ee]\w+' | /usr/bin/head -n 1 )
 	if [[ -n $interface ]]; then
-		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | head -n 1 )
+		local ip=$( /usr/bin/ip -4 addr show $interface | /usr/bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | head -n 1 )
 		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWNETSIZE == true ]]; then
-			local netmask=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '/[0-9]{1,2}' )
+			local netmask=$( /usr/bin/ip -4 addr show $interface | /usr/bin/grep -Eo '/[0-9]{1,2}' )
 		fi
 		if [[ $POWERLEVEL9K_MY_WIRED_IP_SHOWIFNAME == true ]]; then
 			p10k segment -t "$interface: %B$ip%b$netmask"
@@ -49,11 +49,11 @@ function prompt_my_wired_ip () {
 }
 
 function prompt_my_wifi_ip () {
-	local interface=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ww]\w+)' | /bin/grep -Eo '[Ww]\w+' | /bin/head -n 1 )
+	local interface=$( /usr/bin/ip -4 addr show | /usr/bin/grep -Eo '^[0-9]+: ([Ww]\w+)' | /usr/bin/grep -Eo '[Ww]\w+' | /usr/bin/head -n 1 )
 	if [[ -n $interface ]]; then
-		local ip=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | head -n 1 )
+		local ip=$( /usr/bin/ip -4 addr show $interface | /usr/bin/grep -Eo '[0-9]{1,3}(\.[0-9]{1,3}){3}' | head -n 1 )
 		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWNETSIZE == true ]]; then
-			local netmask=$( /bin/ip -4 addr show $interface | /bin/grep -Eo '/[0-9]{1,2}' )
+			local netmask=$( /usr/bin/ip -4 addr show $interface | /usr/bin/grep -Eo '/[0-9]{1,2}' )
 		fi
 		if [[ $POWERLEVEL9K_MY_WIFI_IP_SHOWIFNAME == true ]]; then
 			p10k segment -t "$interface: %B$ip%b$netmask"
@@ -68,7 +68,7 @@ function prompt_my_wifi_ip () {
 }
 
 function prompt_my_if_count () {
-	local count=$( /bin/ip -4 addr show | /bin/grep -Eo '^[0-9]+: ([Ee]\w+|[Ww]\w+)' | /bin/wc -l )
+	local count=$( /usr/bin/ip -4 addr show | /usr/bin/grep -Eo '^[0-9]+: ([Ee]\w+|[Ww]\w+)' | /usr/bin/wc -l )
 	if [[ ( $count -le $POWERLEVEL9K_MY_IF_COUNT_MAXUSUAL ) && ( $count -gt 0 ) ]]; then
 		p10k segment -t "%B$count%b"
 	else
